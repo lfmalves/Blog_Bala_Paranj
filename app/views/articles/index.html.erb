@@ -2,6 +2,8 @@
 <% @articles.each do |article| %>
 Title:        <%= article.title %>
 Description:  <%= article.description %>
-<br></br>
+<%= link_to 'Edit', edit_article_path(article) %>
+<br/>
 <% end %>
+<br/>
 <%= link_to 'New Article', new_article_path %>

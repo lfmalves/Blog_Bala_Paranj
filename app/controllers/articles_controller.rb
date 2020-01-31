@@ -6,4 +6,22 @@ class ArticlesController < ApplicationController
   def new
   	@article = Article.new
   end
+
+  def create
+  	Article.create(params.require(:article).permit(:title, :description))
+
+  	redirect_to articles_index_path
+  end
+
+  def edit
+  	@article = Article.find(params[:id])
+  end
+
+  def update
+  	@article = Article.find(params[:id])
+  	permitted_columns = params.require(:article).permit(:title, :description)
+  	@article.update_attributes(permitted_columns)
+
+  	redirect_to articles_path
+  end  
 end
